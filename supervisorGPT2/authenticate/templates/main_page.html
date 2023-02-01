@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
       </div>
       <form class="form-inline my-2 my-lg-0">
-        <a href="#" class="btn btn-outline-success my-2 my-sm-0 mr-2">Sign In</a>
+        <a href="{% url 'account_login' %}" class="btn btn-outline-success my-2 my-sm-0 mr-2">Sign In</a>
       </form>
     </nav>
     <div class="container mt-5">
@@ -34,7 +34,7 @@
                 </p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-block">Sign Up</a>
+                <a href="{% url 'socialaccount_signup' provider='google' %}" class="btn btn-primary btn-block">Sign Up</a>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
                 </p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-block">Sign Up</a>
+                <a href="{% url 'socialaccount_signup' provider='google' %}" class="btn btn-primary btn-block">Sign Up</a>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
                 </p>
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-block">Sign Up</a>
+                <a href="{% url 'socialaccount_signup' provider='google' %}" class="btn btn-primary btn-block">Sign Up</a>
               </div>
             </div>
           </div>
