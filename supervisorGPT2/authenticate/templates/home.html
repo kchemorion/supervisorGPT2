@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>SupervisorGPT</title>
+    <title>HomeworkGPT</title>
   </head>
     <style>
       .navbar {
@@ -60,29 +60,41 @@
         border: 1px solid #333;
         background-color: #fff;
       }
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        width: 800px;
+        border: 1px solid black;
+        padding: 10px;
+        overflow-y: scroll;
+        margin-left: 20%;
+      }
+      
+      .chat-message {
+        display: flex;
+        margin-bottom: 0px;
+        width: 800px;
+ 
+      }
+      
+      .sender {
+        font-weight: bold;
+        margin-right: 10px;
+      }
     </style>
   </head>
   <body>
     <nav class="navbar">
-      <h1>SupervisorGPT</h1>
+      <h1>HomeworkGPT</h1>
       <a href="#">Sign Out</a>
     </nav>
     <div style="float:left; height: 750px;">
     <!-- Tabs section -->
             <!-- Sidebar with Avatar, Name, Plan, School, Course, Start Date, End Date, and Research Topic -->
             <div class="d-flex bg-light border-right" id="sidebar-wrapper">
-                <div class="sidebar-avatar border-bottom p-4">
-                  <img src="avatar.jpg" alt="Avatar" class="rounded-circle mx-auto d-block mb-3" width="100">
-                  <h3 class="text-center">John Doe</h3>
-                  <p class="text-center">Free Plan</p>
-                  <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#upgradeModal">Upgrade</button>
-                </div>
                 <div class="list-group list-group-flush">
                   <p class="list-group-item">Name: Francis Chemorion</p>
-                  <p class="list-group-item">Date of Birth: 18/08/1993</p>
-                  <p class="list-group-item">Sex: M</p>
-                  <p class="list-group-item">Country: Kenya</p>
-                  <p class="list-group-item">University: Harvard University</p>
                   <p class="list-group-item">Level: PHD</p>
                   <p class="list-group-item">Start Date: 01/01/2021</p>
                   <p class="list-group-item">Course: Computer Science</p>
@@ -93,6 +105,8 @@
                   <p class="list-group-item">Researchgate Username: kchemorion</p>
                   <p class="list-group-item">Linkedin Username: Kchemorion</p>
                   <p class="list-group-item">Research Topic: Artificial Intelligence</p>
+                  <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#">Edit Profile</button>
+
                 </div>
               </div>
                 <!-- Upgrade Modal -->
@@ -118,12 +132,24 @@
   
         <div class="tab active" data-tab="tab-1">Homework Assistant</div>
         <div class="tab" data-tab="tab-2">Research Article writer</div>
-        <div class="tab" data-tab="tab-3">Conferences and Events Planner</div>
-        <div class="tab" data-tab="tab-4">Upskilling Courses & Training Plan</div>
-        <div class="tab" data-tab="tab-5">Job Opportunities</div>
+        <div class="tab" data-tab="tab-3">Research Poster Generator</div>
+        <div class="tab" data-tab="tab-4">Thesis Writer</div>
+        <div class="tab" data-tab="tab-5">Chat with Admin</div>
       </div>
       <div class="tab-content active" id="tab-1">
-        <p>Tab 1 content goes here.</p>
+        <p style="margin-left:20%;">Welcome to the homework assistant. Feel free to paste your question in the chat and expect an accurate answer.</p>
+
+        <div class="chat-container">
+            <div class="chat-message">
+              <span class="sender">Homework Assistant:</span>
+              <span>Hello, how may I assist you today?</span>
+            </div>
+          </div>
+          <form style="margin-left: 20%; width: 500px;">
+            <input type="text" placeholder="Type your message here..."">
+            <button type="submit">Send</button>
+          </form>
+
       </div>
       <div class="tab-content" id="tab-2">
         <p>Tab 2 content goes here.</p>
@@ -164,7 +190,7 @@
 
     <!-- footer -->
     <footer>
-        <p>Copyright &copy; 2023 SupervisorGPT</p>
+        <p>Copyright &copy; 2023 HomeworkGPT</p>
       </footer>
   </body>
 </html>
