@@ -1,27 +1,39 @@
 # supervisorGPT2
 
-This is a fun project that aims to provide an academic direction for a student having trouble with their supervisor or lacking one completely.
+This is a fun project that aims to provide an academic direction for a student who is having trouble with their supervisor or lacking one completely. It is designed to help students reach their personal career development goals and find a research path that interests them.
 
-It starts by learning about the student personal career development goals, what research topics they are interested in and suggests a way forward for the student.
+## Features
 
-It is integrated with chatGPT3 and is to be used as a pocket knife.
+- Personalized Career Development Goals
+- Research Topic Recommendations
+- Integrated with ChatGPT3 for easy access
 
-to use it for free:
-a) set the following environment variables
+## How to Use for Free
+
+1. Set the following environment variables:
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'YOUR_GOOGLE_CLIENT_ID'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'YOUR_GOOGLE_CLIENT_SECRET'
 
+2. Clone the repository:
 
-b)
+$git clone https://github.com/kchemorion/supervisorGPT2.git 
 
-git clone the repository
+3. Change into the repository directory:
 
-cd into the repository
+$ cd supervisorGPT2
 
-pip install -R requirements.txt
+4. Install the requirements:
 
-python manage.py runserver
+$ pip install -R requirements.txt
 
-go to your browser on http://127.0.0.1:8000/home/
+5. Run the server:
 
-You are all set!
+python manage.py runserver 
+
+6. Go to the following URL in your browser:
+
+http://localhost:8000/authenticate
+
+
+You are all set! Now you can use this project as a pocket knife for your academic direction.
