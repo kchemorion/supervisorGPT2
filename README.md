@@ -6,7 +6,13 @@ It starts by learning about the student personal career development goals, what 
 
 It is integrated with chatGPT3 and is to be used as a pocket knife.
 
-to use it:
+to use it for free:
+a) set the following environment variables
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'YOUR_GOOGLE_CLIENT_ID'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'YOUR_GOOGLE_CLIENT_SECRET'
+
+
+b)
 
 git clone the repository
 
