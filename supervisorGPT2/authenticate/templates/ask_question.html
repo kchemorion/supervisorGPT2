@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Ask a Question</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="chat-box" class="chat-box">
+        <div id="chat-messages" class="chat-messages">
+            {% for message in messages %}
+                {% if message.is_user_message %}
+                    <div class="message user-message">{{ message.text }}</div>
+                {% else %}
+                    <div class="message bot-message">{{ message.text }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form id="chat-form" class="chat-form">
+            {% csrf_token %}
+            <input type="text" id="chat-input" name="chat-input" class="chat-input" />
+            <input type="submit" value="Send" class="chat-submit" />
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function() {
+            $('#chat-form').submit(function(e) {
+                e.preventDefault();
+                var input = $('#chat-input').val();
+                $.ajax({
+                    url: "{% url 'question_answer_api' %}",
+                    method: 'POST',
+                    data: {
+                        'input': input,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(data) {
+                        var html = '<div class="message bot-message">' + data.answer + '</div>';
+                        $('#chat-messages').append(html);
+                        $('#chat-input').val('');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

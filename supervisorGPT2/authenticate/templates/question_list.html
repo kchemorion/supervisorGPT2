@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Question List</h1>
+    <ul>
+        {% for question in questions %}
+            <li><a href="{% url 'question_detail' question.pk %}" class="question-link">{{ question.question_text }}</a>
+            {% if question.is_answered %}
+                <span class="badge badge-success">Answered</span>
+            {% else %}
+                <span class="badge badge-warning">Unanswered</span>
+            {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div id="chat-box" class="chat-box">
+        <div id="chat-messages" class="chat-messages">
+            {% for message in messages %}
+                {% if message.is_user_message %}
+                    <div class="message user-message">{{ message.text }}</div>
+                {% else %}
+                    <div class="message bot-message">{{ message.text }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <form id="chat-form" class="chat-form">
+            {% csrf_token %}
+            <input type="text" id="chat-input" name="chat-input" class="chat-input" />
+            <input type="submit" value="Send" class="chat-submit" />
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $(document).ready(function() {
+            $('.question-link').click(function(e) {
+                e.preventDefault();
+                var pk = $(this).attr('href').split('/').pop();
+                $.ajax({
+                    url: "{% url 'question_detail_api' %}",
+                    data: {'pk': pk},
+                    success: function(data) {
+                        $('#chat-messages').empty();
+                        for (var i = 0; i < data.messages.length; i++) {
+                            var message = data.messages[i];
+                            var html = '<div class="message ' + (message.is_user_message ? 'user-message' : 'bot-message') + '">' + message.text + '</div>';
+                            $('#chat-messages').append(html);
+                        }
+                        $('#chat-box').show();
+                    }
+                });
+            });
+
+            $('#chat-form').submit(function(e) {
+                e.preventDefault();
+                var input = $('#chat-input').val();
+                $.ajax({
+                    url: "{% url 'question_answer_api' %}",
+                    method: 'POST',
+                    data: {
+                        'input': input,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function(data) {
+                        var html = '<div class="message user-message">' + input + '</div>';
+                        $('#chat-messages').append(html);
+                        $('#chat-input').val('');
+                        html = '<div class="message bot-message">' + data.answer + '</div>';
+                        $('#chat-messages').append(html);
+                    }
+                });
+            });
+        });
+            

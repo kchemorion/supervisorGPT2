@@ -23,7 +23,7 @@ from django.urls import path, reverse_lazy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('authenticate/', include('authenticate.urls')),
+    path('', include('authenticate.urls')),
     path('accounts/login/', LoginView.as_view(), name='account_login'),
     path('accounts/logout/', LogoutView.as_view(), name='account_logout'),
     path('accounts/', include('allauth.urls')),
